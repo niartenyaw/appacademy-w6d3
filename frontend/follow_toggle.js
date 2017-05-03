@@ -20,15 +20,13 @@ class FollowToggle {
   handleClick() {
     this.$el.on('click', e => {
       e.preventDefault();
-
+      this.toggleFollowingState();
       if (this.followState === 'followed') {
         return APIUtil.unfollowUser(this.userId)
-          .then(this.toggleFollowingState.bind(this))
           .then(this.toggleFollowState.bind(this), this.error);
       }
       else if (this.followState === 'unfollowed') {
         return APIUtil.followUser(this.userId)
-          .then(this.toggleFollowingState.bind(this))
           .then(this.toggleFollowState.bind(this), this.error);
       }
     });

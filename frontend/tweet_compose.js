@@ -32,8 +32,8 @@ class TweetCompose {
       e.preventDefault();
 
       $('strong.chars-left').each((idx, el) => {
-        $(el).empty();
-        $(el).append(`${140 - $content.val().length}`);
+        // $(el).empty();
+        $(el).text(`${140 - $content.val().length}`);
       });
     });
   }

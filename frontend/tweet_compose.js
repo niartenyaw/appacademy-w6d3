@@ -4,6 +4,7 @@ class TweetCompose {
   constructor(el) {
     this.$form = $(el);
     this.$submit = $('#submit-button');
+    this.handleCount();
     this.handleSubmit();
   }
 
@@ -23,8 +24,18 @@ class TweetCompose {
     $('#tweet-mentions').children().each((idx, el) => {
       $(el).removeProp("selected");
     });
+  }
 
+  handleCount() {
+    const $content = $('#tweet-content');
+    $content.on('input', e => {
+      e.preventDefault();
 
+      $('strong.chars-left').each((idx, el) => {
+        $(el).empty();
+        $(el).append(`${140 - $content.val().length}`);
+      });
+    });
   }
 
   handleSuccess(res) {

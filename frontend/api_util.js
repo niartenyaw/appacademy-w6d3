@@ -25,6 +25,15 @@ const APIUtil = {
       success: s,
       error: () => {console.log("Error");}
     });
+  },
+
+  createTweet(formData) {
+    return $.ajax({
+      url: '/tweets',
+      method: 'POST',
+      dataType: 'json',
+      data: formData
+    });
   }
 };
 
